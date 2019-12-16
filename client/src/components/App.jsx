@@ -15,6 +15,8 @@ class App extends React.Component {
         wrongAnswer2: '',
         wrongAnswer3: '',
         wrongAnswer4: '',
+        rightCount: 0,
+        wrongCount: 0;
       },
     };
   }
