@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import List from './List.jsx';
+import ListItem from './ListItem.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,21 +13,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getItems()
-      .then((items) => {
-        this.setState({
-          items,
-        });
-      })
-      .catch((err) => {
-        console.error('Failed to get items!', err);
-      });
+    // this.getItems()
+    //   .then((items) => {
+    //     this.setState({
+    //       items,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.error('Failed to get items!', err);
+    //   });
   }
 
   getItems() {
     console.log("we're clicking");
-    return axios.get('/items')
-      .then(response => response.data);
+    return axios.post('/items')
+      .then(response => response.data)
+      .catch(err => {
+        console.log("get request failed", err);
+      })
   }
 
   render() {
