@@ -14,11 +14,11 @@ class App extends React.Component {
         wrongAnswer1: '',
         wrongAnswer2: '',
         wrongAnswer3: '',
-        wrongAnswer4: '',
         rightCount: 0,
-        wrongCount: 0;
+        wrongCount: 0,
       },
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,12 +34,53 @@ class App extends React.Component {
   }
 
   getItems() {
-    console.log("we're clicking");
-    return axios.post('/items')
-      .then(response => response.data)
-      .catch(err => {
-        console.log("get request failed", err);
+    // this.setState({
+    //   items: {
+    //     question: response.question,
+    //     rightAnswer: response.correct_answer,
+    //     wrongAnswer1: response.data.results[0].incorrect_answers[0],
+    //     wrongAnswer2: response.data.results[0].incorrect_answers[1],
+    //     wrongAnswer3: response.data.results[0].incorrect_answers[2],
+    //     rightCount: 0,
+    //     wrongCount: 0,
+    //   },
+  }
+
+
+  //this works to get api data right away
+  // handleClick() {
+  //   // debugger;
+  //   // console.log("we're clicking");
+  //   return axios.get('https://opentdb.com/api.php?amount=1')
+  //     .then((response) => {
+  //       this.setState({
+  //         items: {
+  //           question: response.question,
+  //           rightAnswer: response.correct_answer,
+  //           wrongAnswer1: response.data.results[0].incorrect_answers[0],
+  //           wrongAnswer2: response.data.results[0].incorrect_answers[1],
+  //           wrongAnswer3: response.data.results[0].incorrect_answers[2],
+  //           rightCount: 0,
+  //           wrongCount: 0,
+  //         },
+
+  //       });
+  //       console.log("calling api", response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("getItems request failed: ", err);
+  //     });
+  // }
+
+  handleClick() {
+    return axios.get('/question')
+      .then((response) => {
+
+        console.log("calling api", response.data);
       })
+      .catch((err) => {
+        console.log("getItems request failed: ", err);
+      });
   }
 
   render() {
@@ -48,9 +89,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Trivia questions</h1>
-        <button onClick={this.getItems}> Click for Trivia question</button>
-        <List items={items} />
-      </div >
+        <button onClick={this.handleClick}> Click for Trivia question</button>
+        {/* <li> {items.question} </li> */}
+        {/* <List items={items} /> */}
+      </div>
     );
   }
 }

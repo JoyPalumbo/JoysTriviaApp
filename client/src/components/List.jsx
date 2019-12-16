@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ListItem from './ListItem.jsx';
 
 const List = ({ items }) => (
-  <div>
+  {/* <div>
     <h4>List Component</h4>
     There are {items.length} items.
     <ul>
@@ -12,7 +12,7 @@ const List = ({ items }) => (
         <ListItem item={item} key={item.id} />
       ))}
     </ul>
-  </div>
+  </div> */}
 );
 
 List.propTypes = {
