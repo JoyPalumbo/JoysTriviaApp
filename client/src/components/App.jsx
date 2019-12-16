@@ -24,6 +24,7 @@ class App extends React.Component {
   }
 
   getItems() {
+    console.log("we're clicking");
     return axios.get('/items')
       .then(response => response.data);
   }
@@ -33,9 +34,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Item List</h1>
+        <h1>Trivia questions</h1>
+        <button onClick={this.getItems}> Click for Trivia question</button>
         <List items={items} />
-      </div>
+      </div >
     );
   }
 }
