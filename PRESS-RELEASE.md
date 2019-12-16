@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Ultimate Trivia Game
 
 ## Sub-Heading
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > This game is for anyone who enjoys a good time. Whether you're at a party or looking to impress a date, or maybe just want to learn some random fun facts, this game is for you!
 
 ## Summary
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > With this game you will be able to get random trivia questions, from a diverse range of catagories.  Once you have read the trivia question and have had time to think, you can click a button to show the answer. Are you up for the challenge?
 
 ## Problem
-  > Describe the problem your product solves.
+  > This product solves the problem of stale, boring parties, get togethers, dates, etc.  Also, for those who organize trivia events but have a hard time coming up with questions or don't have time to, this app is perfect.  It does all the work for you!
 
 ## Solution
-  > Describe how your product elegantly solves the problem.
+  > This app takes all the work out of manually coming up with trivia questions yourself.  It can take a huge amount of time finding the perfect trivia questions but we're doing the work for you so you can sit back and relax. 
 
 ## Quote from You
-  > A quote from a spokesperson in your company.
+  > "We love being challenged and challenging others.  Everyone loves trivia and our app provides a fun way to play trivia.
 
 ## How to Get Started
-  > Describe how easy it is to get started.
+  > To get started just open our app and click the "get question" button.  Once the question appears you have as much time as you need to think of the answer.  Once you're ready to see if you were right, click the "show answer" button. You can do this unlimited number of times and the app displays the previous questions so you can refer back to them.
 
 ## Customer Quote
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "I was at a party that was getting very boring.  It was so lame, people started to leave.  I remembered this awesome trivia game so I busted it out and brought the party back to life with the Ultimate Trivia game app" ~ Sally
 
 ## Closing and Call to Action
-  > Wrap it up and give pointers where the reader should go next.
+  > If you have any questions about or app, or want to keep up with updates on new features, email us at UltimateTriviaApp.gmail.com
