@@ -13,7 +13,7 @@ CREATE TABLE questions
   id int NOT NULL
   AUTO_INCREMENT,
   catagory varchar
-  (50) not null
+  (50) NOT NULL,
   question varchar
   (255) NOT NULL,
   answer varchar
