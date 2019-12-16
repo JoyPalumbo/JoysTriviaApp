@@ -14,7 +14,7 @@ const saveQuestions = require('./db/index');
 
 // });
 
-apiRouter.get('/question', (req, res) => {
+apiRouter.get('/api/question', (req, res) => {
   console.log("we are in apiRouter.get");
   getQuestions.getQuestions()
     .then(response => {
@@ -30,7 +30,7 @@ apiRouter.get('/question', (req, res) => {
       //pass saveData into save function
       saveQuestions.saveQuestion(saveData);
       console.log("we're hitting apiRouter.post", response.results[0].question);
-      res.send(response.data);
+      res.send(saveData);
     })
     .catch(err => {
       console.log("uh oh apiRouter.post not working", err);

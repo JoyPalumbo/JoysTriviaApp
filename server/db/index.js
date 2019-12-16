@@ -37,10 +37,15 @@ const saveQuestion = (data) => {
   });
 };
 
-const getItems = (callback) => {
+const getQuestion = (callback) => {
   // TODO: Your code here!
-  // connection.query('select questions, rightAnswer from questions where ')
+  connection.query('select * from questions');
 };
 
-module.exports.getItems = getItems;
+const getWrongQuestions = () => {
+
+};
+
+module.exports.getQuestion = getQuestion;
 module.exports.saveQuestion = saveQuestion;
+module.exports.getWrongQuestions = getWrongQuestions;

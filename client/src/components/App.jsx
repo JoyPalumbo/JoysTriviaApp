@@ -73,9 +73,20 @@ class App extends React.Component {
   // }
 
   handleClick() {
-    return axios.get('/question')
+    debugger;
+    return axios.get('/api/question')
       .then((response) => {
-
+        this.setState({
+          items: {
+            question: response.data.question,
+            rightAnswer: response.data.rightAnswer,
+            wrongAnswer1: response.data.wrongAnswer1,
+            wrongAnswer2: response.data.wrongAnswer2,
+            wrongAnswer3: response.data.wrongAnswer3,
+            rightCount: 0,
+            wrongCount: 0,
+          },
+        })
         console.log("calling api", response.data);
       })
       .catch((err) => {
@@ -90,7 +101,7 @@ class App extends React.Component {
       <div>
         <h1>Trivia questions</h1>
         <button onClick={this.handleClick}> Click for Trivia question</button>
-        {/* <li> {items.question} </li> */}
+        <ul> {items.question} </ul>
         {/* <List items={items} /> */}
       </div>
     );
