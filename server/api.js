@@ -4,11 +4,11 @@ const db = require('./db');
 const apiRouter = Router();
 
 // TODO: Your routes here!
-app.get('/', (req, res) => {
+apiRouter.get('/', (req, res) => {
 
 });
 
-app.post('/', (req, res) => {
+apiRouter.post('/', (req, res) => {
 
 });
 module.exports.apiRouter = apiRouter;
