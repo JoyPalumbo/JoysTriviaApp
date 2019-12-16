@@ -3,14 +3,21 @@
  *   mysql -u root < schema.sql
  */
 
-DROP DATABASE IF EXISTS mvp;
-CREATE DATABASE mvp;
+DROP DATABASE IF EXISTS trivia;
+CREATE DATABASE trivia;
 
-USE mvp;
+USE trivia;
 
-CREATE TABLE items (
-  id int NOT NULL AUTO_INCREMENT,
-  name varchar(255) NOT NULL,
-  description varchar(50) NOT NULL,
-  PRIMARY KEY (id)
+CREATE TABLE questions
+(
+  id int NOT NULL
+  AUTO_INCREMENT,
+  catagory varchar
+  (50) not null
+  question varchar
+  (255) NOT NULL,
+  answer varchar
+  (100) NOT NULL,
+  PRIMARY KEY
+  (id)
 );
