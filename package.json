@@ -1,7 +1,7 @@
 {
   "name": "mvp-stater-kit",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
     "start-server": "node server/index.js",
     "start-client": "webpack --config webpack.config.js --mode development --watch",
     "lint": "eslint . --ext .js,.jsx"
