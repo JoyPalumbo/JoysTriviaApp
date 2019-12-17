@@ -25,20 +25,28 @@ class Answers extends React.Component {
     });
   }
   //if selected === rightAnswer score++
-  scoreKeep() {
-    if (selected === rightAnswer) {
-      score++;
+  scoreKeep(e) {
+    console.log(e);
+    console.log(this.state.score);
+    if (e === true) {
+      this.setState.score = this.state.score++;
     }
   }
 
+  // clicked() {
+  //   this.scoreKeep();
+  // }
+
   render() {
+    const { items } = this.state;
     console.log(this.props.answers);
     return (
       <div>
+        <h3>Score: {this.state.score} </h3>
         <div className="radio">
           <label>
-            <input type='radio' id={this.props.rightAnswer} name='answer' value='radio-1'
-              checked={this.state.selected === 'radio-1'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            <input type='radio' id={this.props.rightAnswer} name='answer' value='true'
+              checked={this.state.selected === 'true'} onChange={(e) => this.setState({ selected: e.target.value })} onClick={() => this.scoreKeep(true)} />
             {/* <input type="radio" value="option2" checked={this.state.radio === 'option2'} onChange={this.radioChange} /> */}
             {/* <input type="radio" value="rightAnswer" checked={props.rightAnswer} onChange={this.handleChange} /> */}
             {this.props.answers.rightAnswer}
@@ -47,24 +55,24 @@ class Answers extends React.Component {
 
         <div className="radio">
           <label>
-            <input type='radio' id={'radio-2'} name='answer' value='radio-2'
-              checked={this.state.selected === 'radio-2'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            <input type='radio' id={this.props.answers.wrongAnswer1} name='answer' value='false'
+              checked={this.state.selected === 'false'} onChange={(e) => this.setState({ selected: e.target.value })} onClick={() => this.scoreKeep(false)} />
             {this.props.answers.wrongAnswer1}
           </label>
         </div>
 
         <div className="radio">
           <label>
-            <input type='radio' id={'radio-3'} name='answer' value='radio-3'
-              checked={this.state.selected === 'radio-3'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            <input type='radio' id={this.props.answers.wrongAnswer2} name='answer' value='false'
+              checked={this.state.selected === 'false'} onChange={(e) => this.setState({ selected: e.target.value })} onClick={() => this.scoreKeep(false)} />
             {this.props.answers.wrongAnswer2}
           </label>
         </div>
 
         <div className="radio">
           <label>
-            <input type='radio' id={'radio-4'} name='answer' value='radio-4'
-              checked={this.state.selected === 'radio-4'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            <input type='radio' id={this.props.answers.wrongAnswer3} name='answer' value='false'
+              checked={this.state.selected === 'false'} onChange={(e) => this.setState({ selected: e.target.value })} onClick={() => this.scoreKeep(false)} />
             {this.props.answers.wrongAnswer3}
           </label>
         </div>
