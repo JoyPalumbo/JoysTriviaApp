@@ -16,9 +16,12 @@ class App extends React.Component {
         wrongAnswer3: '',
         rightCount: 0,
         wrongCount: 0,
+        selected: "",
       },
     };
     this.handleClick = this.handleClick.bind(this);
+    this.showAnswer = this.showAnswer.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -73,7 +76,7 @@ class App extends React.Component {
   // }
 
   handleClick() {
-    debugger;
+
     return axios.get('/api/question')
       .then((response) => {
         this.setState({
@@ -85,6 +88,7 @@ class App extends React.Component {
             wrongAnswer3: response.data.wrongAnswer3,
             rightCount: 0,
             wrongCount: 0,
+            selected: "",
           },
         })
         console.log("calling api", response.data);
@@ -94,6 +98,16 @@ class App extends React.Component {
       });
   }
 
+  showAnswer() {
+
+  }
+
+  handleChange(event) {
+    this.setState({
+      select: event.target.value
+    });
+  }
+
   render() {
     const { items } = this.state;
 
@@ -101,7 +115,50 @@ class App extends React.Component {
       <div>
         <h1>Trivia questions</h1>
         <button onClick={this.handleClick}> Click for Trivia question</button>
+        <h3>Question</h3>
         <ul> {items.question} </ul>
+        <h3>Answers</h3>
+
+
+        <div className="radio">
+          <label>
+            <input type='radio' id={'radio-1'} name='myRadio' value='radio-1'
+              checked={this.state.selected === 'radio-1'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            {/* <input type="radio" value="option2" checked={this.state.radio === 'option2'} onChange={this.radioChange} /> */}
+            {/* <input type="radio" value="rightAnswer" checked={items.rightAnswer} onChange={this.handleChange} /> */}
+            {items.rightAnswer}
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input type='radio' id={'radio-2'} name='myRadio' value='radio-2'
+              checked={this.state.selected === 'radio-2'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            {items.wrongAnswer1}
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input type='radio' id={'radio-3'} name='myRadio' value='radio-3'
+              checked={this.state.selected === 'radio-3'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            {items.wrongAnswer2}
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input type='radio' id={'radio-4'} name='myRadio' value='radio-4'
+              checked={this.state.selected === 'radio-4'} onChange={(e) => this.setState({ selected: e.target.value })} />
+            {items.wrongAnswer3}
+          </label>
+        </div>
+
+        <button onClick={this.showAnswer}>Show correct Answer</button>
+        {/* <div>
+          <input type="radio" name="answer" value="answer1"> Male<br>
+            <input type="radio" name="answer" value="answer2"> Female<br>
+              <input type="radio" name="answer" value="answer3"> Other<br>
+                <input type="radio" name="answer" value="answer3"> Other
+          </div> */}
+
         {/* <List items={items} /> */}
       </div>
     );
