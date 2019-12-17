@@ -15,16 +15,17 @@ class App extends React.Component {
         wrongAnswer1: '',
         wrongAnswer2: '',
         wrongAnswer3: '',
-        rightCount: 0,
-        wrongCount: 0,
+        answerChoices: [],
         displayAnswer: false,
-        selected: "",
+        selected: '',
+        vote: 0,
       },
     };
     this.handleClick = this.handleClick.bind(this);
     // this.showAnswer = this.showAnswer.bind(this);
     // this.handleChange = this.handleChange.bind(this);
     this.displayAnswerFunc = this.displayAnswerFunc.bind(this);
+    this.voteCounter = this.voteCounter.bind(this);
 
   }
 
@@ -89,12 +90,15 @@ class App extends React.Component {
             wrongAnswer1: response.data.wrongAnswer1,
             wrongAnswer2: response.data.wrongAnswer2,
             wrongAnswer3: response.data.wrongAnswer3,
+            answerChoices: response.data.answerChoices,
             score: 0,
             displayAnswer: false,
             selected: '',
+            vote: 0,
           },
         });
-        console.log("calling api", response.data);
+        console.log("testing wrong answers", response.data.answerChoices);
+        // console.log("calling api", response.data);
       })
       .catch((err) => {
         console.log("getItems request failed: ", err);
@@ -117,14 +121,16 @@ class App extends React.Component {
     this.setState({
       displayAnswer: !this.state.displayAnswer
     });
-    // if (this.state.displayAnswer) {
-    //   <div>
-    //     return <Answer key={items.rightAnswer} />
-
-    //   </div>
-    //}
   }
 
+  voteCounter(e) {
+    console.log("clicked", e, this.state.items.vote);
+    let vote = this.state.items.vote;
+    if (e === 'vote') {
+      this.setState.vote = this.state.items.vote++;
+      // this.setState.items.vote = 10;
+    }
+  }
 
   render() {
     const { items } = this.state;
@@ -138,6 +144,7 @@ class App extends React.Component {
         <ul> {items.question} </ul>
         <h3>Answers</h3>
         <Answers answers={items} />
+        <button type="button" id={items.question} onClick={() => this.voteCounter('vote')}>Click here to vote for this question</button>
 
 
         {/* <div className="radio">
@@ -179,7 +186,7 @@ class App extends React.Component {
           <button type="answer" onClick={this.displayAnswerFunc}>Show/Hide answer</button>
         </div> */}
 
-      </div>
+      </div >
 
     );
   }

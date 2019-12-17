@@ -12,11 +12,13 @@ class Answers extends React.Component {
       wrongAnswer1: '',
       wrongAnswer2: '',
       wrongAnswer3: '',
+      answerChoices: [],
       score: 0,
       displayAnswer: false,
       selected: '',
     };
     this.displayAnswerFunc = this.displayAnswerFunc.bind(this);
+    this.randomAnswerGenerator = this.randomAnswerGenerator.bind(this);
   }
 
   displayAnswerFunc() {
@@ -28,24 +30,31 @@ class Answers extends React.Component {
   scoreKeep(e) {
     console.log(e);
     console.log(this.state.score);
+    // this.randomAnswerGenerator()
     if (e === true) {
       this.setState.score = this.state.score++;
     }
   }
 
+  randomAnswerGenerator() {
+    const randoAnswer = this.state.answerChoices;
+    console.log("testsing random answer", this.props.answers.answerChoices);
+  }
   // clicked() {
   //   this.scoreKeep();
   // }
+
+
 
   render() {
     const { items } = this.state;
     console.log(this.props.answers);
     return (
       <div>
-        <h3>Score: {this.state.score} </h3>
+
         <div className="radio">
           <label>
-            <input type='radio' id={this.props.rightAnswer} name='answer' value='true'
+            <input type='radio' id={this.props.answers.rightAnswer} name='answer' value='true'
               checked={this.state.selected === 'true'} onChange={(e) => this.setState({ selected: e.target.value })} onClick={() => this.scoreKeep(true)} />
             {/* <input type="radio" value="option2" checked={this.state.radio === 'option2'} onChange={this.radioChange} /> */}
             {/* <input type="radio" value="rightAnswer" checked={props.rightAnswer} onChange={this.handleChange} /> */}
@@ -81,6 +90,7 @@ class Answers extends React.Component {
           {this.state.displayAnswer && <h1>{this.props.answers.rightAnswer} </h1>}
           <button type="button" onClick={this.displayAnswerFunc}>Show/Hide answer</button>
         </div>
+        <h3>Score: {this.state.score} </h3>
       </div>
     );
   }

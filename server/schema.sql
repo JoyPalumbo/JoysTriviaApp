@@ -24,10 +24,10 @@ CREATE TABLE questions
   (100) Not Null,
   wrongAnswer4 varchar
   (100),
-  rightCount int
-  (25),
-   wrongCount int
+  vote int
   (25),
   PRIMARY KEY
   (id)
 );
+
+-- mysql -u root < server/schema.sql
