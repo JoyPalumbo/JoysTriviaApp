@@ -7,7 +7,8 @@ require('dotenv').config();
 
 const app = express();
 
-const PORT = process.env.DB_PORT || 8080;
+// const PORT = process.env.DB_PORT || 8080;
+const PORT = 8080;
 const CLIENT_PATH = path.join(__dirname, '../client/dist');
 
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(CLIENT_PATH));
 app.use('/', apiRouter);
 
+console.log(process.env.DB_PORT);
 
 // apiRouter.get('/', (req, res) => {
 //   res.send("hello from server");
