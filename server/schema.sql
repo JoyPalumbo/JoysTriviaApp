@@ -19,13 +19,11 @@ CREATE TABLE questions
   wrongAnswer1 varchar
   (100) Not Null,
   wrongAnswer2 varchar
-  (100) ,
+  (100) not null,
   wrongAnswer3 varchar
   (100) Not Null,
-  wrongAnswer4 varchar
-  (100),
   vote int
-  (25),
+  (25) not null,
   PRIMARY KEY
   (id)
 );

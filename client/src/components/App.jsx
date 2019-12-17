@@ -15,7 +15,7 @@ class App extends React.Component {
         wrongAnswer1: '',
         wrongAnswer2: '',
         wrongAnswer3: '',
-        answerChoices: [],
+        // answerChoices: [],
         displayAnswer: false,
         selected: '',
         vote: 0,
@@ -90,14 +90,14 @@ class App extends React.Component {
             wrongAnswer1: response.data.wrongAnswer1,
             wrongAnswer2: response.data.wrongAnswer2,
             wrongAnswer3: response.data.wrongAnswer3,
-            answerChoices: response.data.answerChoices,
+            // answerChoices: response.data.answerChoices,
             score: 0,
             displayAnswer: false,
             selected: '',
             vote: 0,
           },
         });
-        console.log("testing wrong answers", response.data.answerChoices);
+        // console.log("testing wrong answers", response.data.answerChoices);
         // console.log("calling api", response.data);
       })
       .catch((err) => {

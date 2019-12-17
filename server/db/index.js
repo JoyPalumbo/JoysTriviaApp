@@ -20,8 +20,7 @@ const saveQuestion = (data) => {
     wrongAnswer1: data.wrongAnswer1,
     wrongAnswer2: data.wrongAnswer2,
     wrongAnswer3: data.wrongAnswer3,
-    rightCount: 0,
-    wrongCount: 0,
+    vote: 0,
   };
   //  connection.query(insert into questions (question, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3, rightCount, wrongCount)
   // values (data.question, data.rightAnswer,
