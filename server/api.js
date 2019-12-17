@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const apiRouter = Router();
 const getQuestions = require('./helpers');
 const saveQuestions = require('./db/index');
+const saveVote = require('./db/index');
 
 
 // app.use(bodyParser.json());
@@ -13,6 +14,11 @@ const saveQuestions = require('./db/index');
 // apiRouter.get('/', (req, res) => {
 
 // });
+
+apiRouter.post('/votes', (req, res) => {
+  console.log("post request to save votes", req.body);
+  saveVote.saveVote(req.body);
+});
 
 apiRouter.get('/api/question', (req, res) => {
   console.log("we are in apiRouter.get");
@@ -24,7 +30,7 @@ apiRouter.get('/api/question', (req, res) => {
         wrongAnswer1: response.results[0].incorrect_answers[0].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
         wrongAnswer2: response.results[0].incorrect_answers[1].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
         wrongAnswer3: response.results[0].incorrect_answers[2].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        // answerChoices: [...response.results[0].incorrect_answers],
+        //  answerChoices: [...response.results[0].incorrect_answers],
         vote: 0,
       }
       saveQuestions.saveQuestion(saveData);

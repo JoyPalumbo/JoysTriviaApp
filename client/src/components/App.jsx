@@ -5,6 +5,7 @@ import List from './List.jsx';
 import ListItem from './ListItem.jsx';
 import Answers from './Answers.jsx';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +27,7 @@ class App extends React.Component {
     // this.handleChange = this.handleChange.bind(this);
     this.displayAnswerFunc = this.displayAnswerFunc.bind(this);
     this.voteCounter = this.voteCounter.bind(this);
+    this.postVote = this.postVote.bind(this);
 
   }
 
@@ -97,6 +99,7 @@ class App extends React.Component {
             vote: 0,
           },
         });
+
         // console.log("testing wrong answers", response.data.answerChoices);
         // console.log("calling api", response.data);
       })
@@ -123,13 +126,29 @@ class App extends React.Component {
     });
   }
 
+  postVote() {
+    axios.post('/votes', {
+      question: this.state.items.question,
+      vote: this.state.items.vote,
+
+    })
+      .then((response) => {
+        console.log("sending vote to server", response)
+      })
+      .catch((err) => {
+        console.log("ops, didn't send vote to server", err);
+      });
+  }
+
   voteCounter(e) {
     console.log("clicked", e, this.state.items.vote);
     let vote = this.state.items.vote;
     if (e === 'vote') {
       this.setState.vote = this.state.items.vote++;
       // this.setState.items.vote = 10;
+      this.postVote();
     }
+
   }
 
   render() {

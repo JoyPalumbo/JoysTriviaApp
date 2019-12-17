@@ -12,6 +12,21 @@ const connection = mysql.createConnection({
   database: DB_NAME,
 });
 
+const saveVote = ({ question, vote }) => {
+  // const questionString = "'" + question + "'";
+  // const vote1 = vote;
+  // console.log("saving vote to db", questionString);
+  connection.query('update questions set vote = ? where question = ?',
+    [vote, question], (err, woot) => {
+      if (err) {
+        console.log("didn't save vote", err);
+      }
+      else {
+        console.log("saved vote to db", woot);
+      }
+    });
+};
+
 const saveQuestion = (data) => {
   console.log("we're in the saveDB function", data);
   const info = {
@@ -24,8 +39,8 @@ const saveQuestion = (data) => {
   };
   //  connection.query(insert into questions (question, rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3, rightCount, wrongCount)
   // values (data.question, data.rightAnswer,
-  //   data.wrongAnswer1, data.wrongAnswer2,
-  //   data.wrongAnswer3, 0, 0))
+
+
   connection.query('INSERT INTO questions SET ?', info, (err, bla) => {
     if (err) {
       console.log("uh oh, can't save to DB");
@@ -48,3 +63,4 @@ const getWrongQuestions = () => {
 module.exports.getQuestion = getQuestion;
 module.exports.saveQuestion = saveQuestion;
 module.exports.getWrongQuestions = getWrongQuestions;
+module.exports.saveVote = saveVote;
