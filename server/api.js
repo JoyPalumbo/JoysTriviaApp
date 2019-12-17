@@ -18,8 +18,10 @@ apiRouter.get('/api/question', (req, res) => {
   console.log("we are in apiRouter.get");
   getQuestions.getQuestions()
     .then(response => {
+      const reg = response.results[0].question.replace(/[^A-Za-z0-9]/g, " ").replace(/quot/i, "");
+      console.log("rejex example: ", reg, response.results[0].question);
       const saveData = {
-        question: response.results[0].question,
+        question: response.results[0].question.replace(/[^A-Za-z0-9]/g, " ").replace(/quot/i, ""),
         rightAnswer: response.results[0].correct_answer,
         wrongAnswer1: response.results[0].incorrect_answers[0],
         wrongAnswer2: response.results[0].incorrect_answers[1],
