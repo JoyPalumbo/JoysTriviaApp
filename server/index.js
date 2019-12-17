@@ -6,7 +6,7 @@ const { apiRouter } = require('./api');
 
 const app = express();
 
-const PORT = 8080;
+const PORT = process.end.DB_PORT || 8080;
 const CLIENT_PATH = path.join(__dirname, '../client/dist');
 
 
