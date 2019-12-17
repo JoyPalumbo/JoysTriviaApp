@@ -1,0 +1,124 @@
+import mobiscroll from '@mobiscroll/react';
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+
+class App extends React.Component {
+constructor(props) {
+super(props);
+this.state = {
+switchOff: false,
+switchOn: true,
+switchOffDisabled: false,
+switchOnDisabled: true,
+primary: true,
+secondary: true,
+success: true,
+danger: true,
+warning: true,
+info: true
+};
+}
+render() {
+return (
+<mobiscroll.Form theme="ios" themeVariant="light">
+  <mobiscroll.FormGroup>
+    <mobiscroll.FormGroupTitle>Switch</mobiscroll.FormGroupTitle>
+    <mobiscroll.Switch checked={this.state.switchOff} onChange={this.changeSwitchOff}>
+      Switch off
+      <span className="mbsc-desc">This is desctiption for Switch</span>
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.switchOn} onChange={this.changeSwitchOn} checked>
+      Switch on
+      <span className="mbsc-desc">This is desctiption for Switch</span>
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.switchOffDisabled} onChange={this.changeSwitchOffDisabled} disabled>
+      Switch off
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.switchOnDisabled} onChange={this.changeSwitchOnDisabled} disabled checked>
+      Switch on
+    </mobiscroll.Switch>
+  </mobiscroll.FormGroup>
+  <mobiscroll.FormGroup>
+    <mobiscroll.FormGroupTitle>Switch colors</mobiscroll.FormGroupTitle>
+    <mobiscroll.Switch checked={this.state.primary} onChange={this.setPrimary} color="primary">
+      Primary
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.secondary} onChange={this.setSecondary} color="secondary">
+      Secondary
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.success} onChange={this.setSuccess} color="success">
+      Success
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.danger} onChange={this.setDanger} color="danger">
+      Danger
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.warning} onChange={this.setWarning} color="warning">
+      Warning
+    </mobiscroll.Switch>
+    <mobiscroll.Switch checked={this.state.info} onChange={this.setInfo} color="info">
+      Info
+    </mobiscroll.Switch>
+  </mobiscroll.FormGroup>
+</mobiscroll.Form>
+);
+}
+
+changeSwitchOff = (ev) => {
+this.setState({
+switchOff: ev.target.checked
+});
+}
+
+changeSwitchOn = (ev) => {
+this.setState({
+switchOn: ev.target.checked
+});
+}
+
+changeSwitchOffDisabled = (ev) => {
+this.setState({
+switchOffDisabled: ev.target.checked
+});
+}
+
+changeSwitchOnDisabled = (ev) => {
+this.setState({
+switchOnDisabled: ev.target.checked
+});
+}
+
+setPrimary = (ev) => {
+this.setState({
+primary: ev.target.checked
+});
+}
+
+setSecondary = (ev) => {
+this.setState({
+secondary: ev.target.checked
+});
+}
+
+setSuccess = (ev) => {
+this.setState({
+success: ev.target.checked
+});
+}
+
+setDanger = (ev) => {
+this.setState({
+danger: ev.target.checked
+});
+}
+
+setWarning = (ev) => {
+this.setState({
+warning: ev.target.checked
+});
+}
+
+setInfo = (ev) => {
+this.setState({
+info: ev.target.checked
+});
+}
+}

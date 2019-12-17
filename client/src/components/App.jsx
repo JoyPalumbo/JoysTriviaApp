@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import List from './List.jsx';
 import ListItem from './ListItem.jsx';
+import Answer from './Answer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,12 +17,15 @@ class App extends React.Component {
         wrongAnswer3: '',
         rightCount: 0,
         wrongCount: 0,
+        displayAnswer: false,
         selected: "",
       },
     };
     this.handleClick = this.handleClick.bind(this);
-    this.showAnswer = this.showAnswer.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    // this.showAnswer = this.showAnswer.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    this.displayAnswerFunc = this.displayAnswerFunc.bind(this);
+
   }
 
   componentDidMount() {
@@ -36,18 +40,18 @@ class App extends React.Component {
     //   });
   }
 
-  getItems() {
-    // this.setState({
-    //   items: {
-    //     question: response.question,
-    //     rightAnswer: response.correct_answer,
-    //     wrongAnswer1: response.data.results[0].incorrect_answers[0],
-    //     wrongAnswer2: response.data.results[0].incorrect_answers[1],
-    //     wrongAnswer3: response.data.results[0].incorrect_answers[2],
-    //     rightCount: 0,
-    //     wrongCount: 0,
-    //   },
-  }
+  // getItems() {
+  // this.setState({
+  //   items: {
+  //     question: response.question,
+  //     rightAnswer: response.correct_answer,
+  //     wrongAnswer1: response.data.results[0].incorrect_answers[0],
+  //     wrongAnswer2: response.data.results[0].incorrect_answers[1],
+  //     wrongAnswer3: response.data.results[0].incorrect_answers[2],
+  //     rightCount: 0,
+  //     wrongCount: 0,
+  //   },
+  // }
 
 
   //this works to get api data right away
@@ -76,7 +80,6 @@ class App extends React.Component {
   // }
 
   handleClick() {
-
     return axios.get('/api/question')
       .then((response) => {
         this.setState({
@@ -88,9 +91,10 @@ class App extends React.Component {
             wrongAnswer3: response.data.wrongAnswer3,
             rightCount: 0,
             wrongCount: 0,
+            displayAnswer: false,
             selected: "",
           },
-        })
+        });
         console.log("calling api", response.data);
       })
       .catch((err) => {
@@ -98,15 +102,30 @@ class App extends React.Component {
       });
   }
 
-  showAnswer() {
+  // showAnswer() {
+  //   // this.setState({
 
-  }
+  //   // })
+  // }
 
-  handleChange(event) {
+  // handleChange(event) {
+  //   this.setState({
+  //     rightAnswer: 'bob'
+  //   });
+  // }
+
+  displayAnswerFunc() {
     this.setState({
-      select: event.target.value
+      displayAnswer: !this.state.displayAnswer
     });
+    // if (this.state.displayAnswer) {
+    //   <div>
+    //     return <Answer key={items.rightAnswer} />
+
+    //   </div>
+    //}
   }
+
 
   render() {
     const { items } = this.state;
@@ -114,7 +133,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Trivia questions</h1>
-        <button onClick={this.handleClick}> Click for Trivia question</button>
+        <button type="question" onClick={this.handleClick} onChange={this.displayAnswerFunc}> Click for Trivia question</button>
         <h3>Question</h3>
         <ul> {items.question} </ul>
         <h3>Answers</h3>
@@ -129,6 +148,7 @@ class App extends React.Component {
             {items.rightAnswer}
           </label>
         </div>
+
         <div className="radio">
           <label>
             <input type='radio' id={'radio-2'} name='myRadio' value='radio-2'
@@ -136,6 +156,7 @@ class App extends React.Component {
             {items.wrongAnswer1}
           </label>
         </div>
+
         <div className="radio">
           <label>
             <input type='radio' id={'radio-3'} name='myRadio' value='radio-3'
@@ -143,6 +164,7 @@ class App extends React.Component {
             {items.wrongAnswer2}
           </label>
         </div>
+
         <div className="radio">
           <label>
             <input type='radio' id={'radio-4'} name='myRadio' value='radio-4'
@@ -151,18 +173,15 @@ class App extends React.Component {
           </label>
         </div>
 
-        <button onClick={this.showAnswer}>Show correct Answer</button>
-        {/* <div>
-          <input type="radio" name="answer" value="answer1"> Male<br>
-            <input type="radio" name="answer" value="answer2"> Female<br>
-              <input type="radio" name="answer" value="answer3"> Other<br>
-                <input type="radio" name="answer" value="answer3"> Other
-          </div> */}
+        <div>
+          {this.state.displayAnswer && <h1>{items.rightAnswer} </h1>}
+          <button type="answer" onClick={this.displayAnswerFunc}>Show/Hide answer</button>
+        </div>
 
-        {/* <List items={items} /> */}
       </div>
+
     );
   }
 }
-
 export default App;
+
