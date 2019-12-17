@@ -20,14 +20,14 @@ apiRouter.get('/api/question', (req, res) => {
     .then(response => {
       // const reg = response.results[0].question.replace(new RegExp('&#039;', 'g'), "");
 
-      const reg = response.results[0].question.replace(new RegExp('&quot;', 'g'), "");
+      const reg = response.results[0].question.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "");
       console.log("rejex example: ", reg, response.results[0].question);
       const saveData = {
-        question: response.results[0].question.replace(/[^A-Za-z0-9]/g, " ").replace(new RegExp('&quot;', 'g'), ""),
-        rightAnswer: response.results[0].correct_answer,
-        wrongAnswer1: response.results[0].incorrect_answers[0],
-        wrongAnswer2: response.results[0].incorrect_answers[1],
-        wrongAnswer3: response.results[0].incorrect_answers[2],
+        question: response.results[0].question.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
+        rightAnswer: response.results[0].correct_answer.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
+        wrongAnswer1: response.results[0].incorrect_answers[0].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
+        wrongAnswer2: response.results[0].incorrect_answers[1].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
+        wrongAnswer3: response.results[0].incorrect_answers[2].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
         rightCount: 0,
         wrongCount: 0,
       }
