@@ -25,12 +25,12 @@ apiRouter.get('/api/question', (req, res) => {
   getQuestions.getQuestions()
     .then(response => {
       const saveData = {
-        question: response.results[0].question.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        rightAnswer: response.results[0].correct_answer.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        wrongAnswer1: response.results[0].incorrect_answers[0].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        wrongAnswer2: response.results[0].incorrect_answers[1].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        wrongAnswer3: response.results[0].incorrect_answers[2].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), ""),
-        //  answerChoices: [...response.results[0].incorrect_answers],
+        question: response.results[0].question.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "").replace(new RegExp('&amp;', 'g'), 'and'),
+        rightAnswer: response.results[0].correct_answer.replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "").replace(new RegExp('&amp;', 'g'), 'and'),
+        wrongAnswer1: response.results[0].incorrect_answers[0].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "").replace(new RegExp('&amp;', 'g'), 'and'),
+        wrongAnswer2: response.results[0].incorrect_answers[1].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "").replace(new RegExp('&amp;', 'g'), 'and'),
+        wrongAnswer3: response.results[0].incorrect_answers[2].replace(new RegExp('&quot;', 'g'), "").replace(new RegExp('&#039;', 'g'), "").replace(new RegExp('&amp;', 'g'), 'and'),
+        //  answerChoices: [...response.results[0].incorrect_answers], &amp;
         vote: 0,
       }
       saveQuestions.saveQuestion(saveData);
