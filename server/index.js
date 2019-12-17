@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { apiRouter } = require('./api');
+require('dotenv').config();
 // const getQuestions = require('./helpers');
 
 const app = express();
 
-const PORT = process.end.DB_PORT || 8080;
+const PORT = process.env.DB_PORT || 8080;
 const CLIENT_PATH = path.join(__dirname, '../client/dist');
 
 
