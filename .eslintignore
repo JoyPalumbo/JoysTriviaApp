@@ -1,2 +1,11 @@
 node_modules
 client/dist
+const .env = require('.env');
+.env.config();
+const {
+ DB_HOST=35.223.228.2,
+DB_PORT=3306,
+USER_NAME: joy,
+USER_PASS: AErQp5F0SRfLBUzK,
+DATABASE: db_joy,
+} = process.env;
