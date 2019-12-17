@@ -6,7 +6,8 @@ const axios = require('axios');
 
 const getQuestions = function () {
   const options = {
-    url: 'https://opentdb.com/api.php?amount=1'
+    url: 'https://opentdb.com/api.php?amount=1&type=multiple'
+
 
   }
   return axios.get(options.url)
