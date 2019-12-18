@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 
 const getTop = (callback) => {
   console.log("getting topVotes");
-  connection.query('select question from questions where vote > 2 limit 5', (err, question) => {
+  connection.query('select question from questions where vote > 2', (err, question) => {
     if (err) {
       callback(err);
     }
