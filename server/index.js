@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const app = express();
 
-const PORT = process.env.DB_PORT || 8080;
+const PORT = process.env.DB_PORT;
 // const PORT = 8080;
 const CLIENT_PATH = path.join(__dirname, '../client/dist');
 
