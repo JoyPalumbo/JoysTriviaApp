@@ -1,4 +1,13 @@
 const mysql = require('mysql');
+const .env = require(.env');
+dotenv.config();
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_PORT,
+  DB_DATABASE,
+} = process.env;
 
 const DB_HOST = 'localhost';
 const DB_USER = 'root';
