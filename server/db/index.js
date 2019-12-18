@@ -12,6 +12,30 @@ const connection = mysql.createConnection({
   database: DB_NAME,
 });
 
+const getTop = (callback) => {
+  console.log("getting topVotes");
+  connection.query('select question from questions where vote > 2 limit 5', (err, question) => {
+    if (err) {
+      callback(err);
+    }
+    else {
+      callback(null, question);
+    }
+  });
+};
+
+// const getTop = () => new Promise((resolve, reject) => {
+//   console.log("getting topVotes");
+//   return connection.query('select question from questions where vote > 2 limit 5', (err, question) => {
+//     if (err) {
+//       console.log("didnt get top questions", err);
+//     }
+//     else {
+//       console.log("got top questions", question);
+//     }
+//   });
+// });
+
 const saveVote = ({ question, vote }) => {
   // const questionString = "'" + question + "'";
   // const vote1 = vote;
@@ -46,7 +70,7 @@ const saveQuestion = (data) => {
       console.log("uh oh, can't save to DB");
     }
     else {
-      console.log("saved to db", bla);
+      console.log("saved to db");
     }
   });
 };
@@ -64,3 +88,4 @@ module.exports.getQuestion = getQuestion;
 module.exports.saveQuestion = saveQuestion;
 module.exports.getWrongQuestions = getWrongQuestions;
 module.exports.saveVote = saveVote;
+module.exports.getTop = getTop;

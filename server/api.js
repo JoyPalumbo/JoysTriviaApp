@@ -6,6 +6,7 @@ const apiRouter = Router();
 const getQuestions = require('./helpers');
 const saveQuestions = require('./db/index');
 const saveVote = require('./db/index');
+const getTop = require('./db/index');
 
 
 // app.use(bodyParser.json());
@@ -18,6 +19,36 @@ const saveVote = require('./db/index');
 apiRouter.post('/votes', (req, res) => {
   console.log("post request to save votes", req.body);
   saveVote.saveVote(req.body);
+});
+
+apiRouter.get('/topVotes', (req, res) => {
+  getTop.getTop((err, questions) => {
+    if (err) {
+      console.log('Error getting top questions', err);
+      res.sendStatus(500);
+    } else {
+      console.log('top questions from db:', questions);
+      res.json(questions);
+    }
+  });
+  // .then(topQuestions => {
+  //   console.log("we got our top questions", topQuestions);
+  //   // res.json(topQuestions);
+  //   res.send(topQuestions);
+  // })
+
+  // getTop.getTop((err, questions) => {
+  //   if (err) {
+  //     console.log("error getting questions", err);
+  //   }
+  //   else {
+  //     console.log("top questions from db", res.questions);
+  //     res.json(res.questions);
+  //   }
+  // })
+  //   .then(response => {
+
+  // })
 });
 
 apiRouter.get('/api/question', (req, res) => {

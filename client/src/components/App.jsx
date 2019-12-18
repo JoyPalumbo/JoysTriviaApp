@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-import List from './List.jsx';
-import ListItem from './ListItem.jsx';
 import Answers from './Answers.jsx';
+import TopQuestions from './TopQuestions.jsx';
+
 
 
 class App extends React.Component {
@@ -164,7 +164,7 @@ class App extends React.Component {
         <h3>Answers</h3>
         <Answers answers={items} />
         <button type="button" id={items.question} onClick={() => this.voteCounter('vote')}>Click here to vote for this question</button>
-
+        <TopQuestions />
 
         {/* <div className="radio">
           <label>
