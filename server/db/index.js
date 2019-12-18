@@ -10,10 +10,10 @@ const {
   DB_DATABASE,
 } = process.env;
 
-const DB_HOST = 'localhost';
-const DB_USER = 'root';
-const DB_PASS = '';
-const DB_NAME = 'trivia';
+// const DB_HOST = 'localhost';
+// const DB_USER = 'root';
+// const DB_PASS = '';
+// const DB_NAME = 'trivia';
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
