@@ -1,6 +1,7 @@
 const mysql = require('mysql');
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // const {
 //   DB_USER,
@@ -10,24 +11,24 @@ const mysql = require('mysql');
 //   DB_DATABASE,
 // } = process.env;
 
-const DB_HOST = 'localhost';
-const DB_USER = 'root';
-const DB_PASS = '';
-const DB_NAME = 'trivia';
-
-// const connection = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: process.env.DB_NAME,
-// });
+// const DB_HOST = 'localhost';
+// const DB_USER = 'root';
+// const DB_PASS = '';
+// const DB_NAME = 'trivia';
 
 const connection = mysql.createConnection({
-  host: DB_HOST,
-  user: DB_USER,
-  password: DB_PASS,
-  database: DB_NAME,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
+
+// const connection = mysql.createConnection({
+//   host: DB_HOST,
+//   user: DB_USER,
+//   password: DB_PASS,
+//   database: DB_NAME,
+// });
 
 const getTop = (callback) => {
   console.log("getting topVotes");
