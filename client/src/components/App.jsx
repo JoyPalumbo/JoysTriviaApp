@@ -28,59 +28,8 @@ class App extends React.Component {
     this.displayAnswerFunc = this.displayAnswerFunc.bind(this);
     this.voteCounter = this.voteCounter.bind(this);
     this.postVote = this.postVote.bind(this);
-
   }
 
-  componentDidMount() {
-    // this.getItems()
-    //   .then((items) => {
-    //     this.setState({
-    //       items,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.error('Failed to get items!', err);
-    //   });
-  }
-
-  // getItems() {
-  // this.setState({
-  //   items: {
-  //     question: response.question,
-  //     rightAnswer: response.correct_answer,
-  //     wrongAnswer1: response.data.results[0].incorrect_answers[0],
-  //     wrongAnswer2: response.data.results[0].incorrect_answers[1],
-  //     wrongAnswer3: response.data.results[0].incorrect_answers[2],
-  //     rightCount: 0,
-  //     wrongCount: 0,
-  //   },
-  // }
-
-
-  //this works to get api data right away
-  // handleClick() {
-  //   // debugger;
-  //   // console.log("we're clicking");
-  //   return axios.get('https://opentdb.com/api.php?amount=1')
-  //     .then((response) => {
-  //       this.setState({
-  //         items: {
-  //           question: response.question,
-  //           rightAnswer: response.correct_answer,
-  //           wrongAnswer1: response.data.results[0].incorrect_answers[0],
-  //           wrongAnswer2: response.data.results[0].incorrect_answers[1],
-  //           wrongAnswer3: response.data.results[0].incorrect_answers[2],
-  //           rightCount: 0,
-  //           wrongCount: 0,
-  //         },
-
-  //       });
-  //       console.log("calling api", response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("getItems request failed: ", err);
-  //     });
-  // }
 
   handleClick() {
     return axios.get('/api/question')
@@ -100,25 +49,12 @@ class App extends React.Component {
           },
         });
 
-        // console.log("testing wrong answers", response.data.answerChoices);
-        // console.log("calling api", response.data);
       })
       .catch((err) => {
         console.log("getItems request failed: ", err);
       });
   }
 
-  // showAnswer() {
-  //   // this.setState({
-
-  //   // })
-  // }
-
-  // handleChange(event) {
-  //   this.setState({
-  //     rightAnswer: 'bob'
-  //   });
-  // }
 
   displayAnswerFunc() {
     this.setState({
@@ -148,7 +84,6 @@ class App extends React.Component {
       // this.setState.items.vote = 10;
       this.postVote();
     }
-
   }
 
   render() {
@@ -165,47 +100,7 @@ class App extends React.Component {
         <Answers answers={items} />
         <button type="button" id={items.question} onClick={() => this.voteCounter('vote')}>Click here to vote for this question</button>
         <TopQuestions />
-
-        {/* <div className="radio">
-          <label>
-            <input type='radio' id={items.rightAnswer} name='myRadio' value='radio-1'
-              checked={this.state.selected === 'radio-1'} onChange={(e) => this.setState({ selected: e.target.value })} />
-            {/* <input type="radio" value="option2" checked={this.state.radio === 'option2'} onChange={this.radioChange} /> */}
-        {/* <input type="radio" value="rightAnswer" checked={items.rightAnswer} onChange={this.handleChange} /> */}
-        {/* {items.rightAnswer}
-          </label>
-        </div> */}
-
-        {/* <div className="radio">
-          <label>
-            <input type='radio' id={'radio-2'} name='myRadio' value='radio-2'
-              checked={this.state.selected === 'radio-2'} onChange={(e) => this.setState({ selected: e.target.value })} />
-            {items.wrongAnswer1}
-          </label>
-        </div> */}
-
-        {/* <div className="radio">
-          <label>
-            <input type='radio' id={'radio-3'} name='myRadio' value='radio-3'
-              checked={this.state.selected === 'radio-3'} onChange={(e) => this.setState({ selected: e.target.value })} />
-            {items.wrongAnswer2}
-          </label>
-        </div> */}
-
-        {/* <div className="radio">
-          <label>
-            <input type='radio' id={'radio-4'} name='myRadio' value='radio-4'
-              checked={this.state.selected === 'radio-4'} onChange={(e) => this.setState({ selected: e.target.value })} />
-            {items.wrongAnswer3}
-          </label>
-        </div> */}
-
-        {/* <div>
-          {this.state.displayAnswer && <h1>{items.rightAnswer} </h1>}
-          <button type="answer" onClick={this.displayAnswerFunc}>Show/Hide answer</button>
-        </div> */}
-
-      </div >
+      </div>
 
     );
   }
