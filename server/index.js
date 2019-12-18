@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { apiRouter } = require('./api');
-require('.env').config();
+// require('dotenv').config();
 // const getQuestions = require('./helpers');
 
 const app = express();
