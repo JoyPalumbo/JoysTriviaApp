@@ -1,6 +1,6 @@
 const mysql = require('mysql');
-const .env = require(.env');
-  .env.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const {
   DB_USER,
