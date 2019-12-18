@@ -27,11 +27,13 @@ class TopQuestions extends React.Component {
     console.log("trying to get question array", this.state.topQuestions);
 
     return (
+
       <div>
+        <h2>Top voted questions</h2>
         {this.state.topQuestions.map((question) => {
           return (
             <div>
-              <h2>{question.question}</h2>
+              <h4>{question.question}</h4>
             </div>
           );
         })}

@@ -156,10 +156,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Trivia questions</h1>
+        <h1>Joy's Awesome Trivia App</h1>
 
         <button type="question" onClick={this.handleClick} onChange={this.displayAnswerFunc}> Click for Trivia question</button>
-        <h3>Question</h3>
+        <h2>Question</h2>
         <ul> {items.question} </ul>
         <h3>Answers</h3>
         <Answers answers={items} />
